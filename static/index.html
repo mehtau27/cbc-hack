@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dance Choreography Comparison</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💃 Dance Choreography Comparison</h1>
+            <p>Compare student choreography to example videos with AI-powered feedback</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section id="upload-section" class="section">
+                <h2>Upload Videos</h2>
+
+                <div class="upload-grid">
+                    <!-- Example Video -->
+                    <div class="upload-box">
+                        <h3>📹 Example Video (Captain's Choreography)</h3>
+                        <input type="file" id="example-input" accept="video/*" />
+                        <label for="example-input" class="upload-label">
+                            <span class="upload-icon">📂</span>
+                            <span class="upload-text">Choose Example Video</span>
+                        </label>
+                        <p class="file-name" id="example-name"></p>
+                    </div>
+
+                    <!-- Assignment Video -->
+                    <div class="upload-box">
+                        <h3>🎭 Assignment Video (Student's Performance)</h3>
+                        <input type="file" id="assignment-input" accept="video/*" />
+                        <label for="assignment-input" class="upload-label">
+                            <span class="upload-icon">📂</span>
+                            <span class="upload-text">Choose Assignment Video</span>
+                        </label>
+                        <p class="file-name" id="assignment-name"></p>
+                    </div>
+                </div>
+
+                <div class="options-section">
+                    <div class="option-group">
+                        <label for="student-name">Student Name:</label>
+                        <input type="text" id="student-name" placeholder="Enter student name" />
+                    </div>
+
+                    <div class="option-group">
+                        <label for="focus-areas">Focus Areas (Optional):</label>
+                        <select id="focus-areas" multiple>
+                            <option value="full_body" selected>Full Body</option>
+                            <option value="upper_body">Upper Body</option>
+                            <option value="arms">Arms</option>
+                            <option value="legs">Legs</option>
+                            <option value="lower_body">Lower Body</option>
+                        </select>
+                        <small>Hold Ctrl/Cmd to select multiple</small>
+                    </div>
+                </div>
+
+                <button id="compare-btn" class="btn btn-primary" disabled>Compare Videos</button>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progress-section" class="section hidden">
+                <h2>Processing...</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p class="progress-text" id="progress-text">Initializing...</p>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results-section" class="section hidden">
+                <h2>Comparison Results</h2>
+
+                <div class="score-display">
+                    <div class="overall-score">
+                        <h3>Overall Match</h3>
+                        <div class="score-circle" id="overall-score">0%</div>
+                    </div>
+
+                    <div class="breakdown-scores">
+                        <div class="score-item">
+                            <span class="score-label">Pose Accuracy</span>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" id="pose-score"></div>
+                            </div>
+                            <span class="score-value" id="pose-value">0%</span>
+                        </div>
+
+                        <div class="score-item">
+                            <span class="score-label">Timing Accuracy</span>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" id="timing-score"></div>
+                            </div>
+                            <span class="score-value" id="timing-value">0%</span>
+                        </div>
+
+                        <div class="score-item">
+                            <span class="score-label">Movement Smoothness</span>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" id="smoothness-score"></div>
+                            </div>
+                            <span class="score-value" id="smoothness-value">0%</span>
+                        </div>
+
+                        <div class="score-item">
+                            <span class="score-label">Angle Accuracy</span>
+                            <div class="score-bar">
+                                <div class="score-bar-fill" id="angle-score"></div>
+                            </div>
+                            <span class="score-value" id="angle-value">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Feedback -->
+                <div class="feedback-section">
+                    <h3>🤖 AI-Powered Feedback</h3>
+                    <div class="feedback-box" id="ai-feedback"></div>
+                </div>
+
+                <!-- Specific Issues -->
+                <div class="issues-section">
+                    <h3>📝 Detailed Feedback Points</h3>
+                    <div id="feedback-points"></div>
+                </div>
+
+                <button id="new-comparison-btn" class="btn btn-secondary">New Comparison</button>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="reports-section" class="section">
+                <h2>📊 Saved Reports</h2>
+                <button id="load-reports-btn" class="btn btn-secondary">Load Reports</button>
+                <div id="reports-list" class="hidden"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
